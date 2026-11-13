@@ -1,4 +1,5 @@
-const API_BASE = '/api';
+const rawBase = (import.meta.env && import.meta.env.VITE_API_BASE) || '/api';
+const API_BASE = rawBase.endsWith('/api') ? rawBase : `${rawBase.replace(/\/$/, '')}/api`;
 
 /**
  * Send an HTTP request to the Express backend and throw a readable Error on failure.
